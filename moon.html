@@ -35,3 +35,39 @@ nav {
     z-index: 1000;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.navbar {
+    list-style-type: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+.navbar li a:hover {
+    background-color: #575757;
+}
+.search-container {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    display: inline-block;
+    z-index: 100;
+}
+
+.search-input {
+    width: 250px;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
