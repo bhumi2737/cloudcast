@@ -45,4 +45,33 @@
             margin-bottom: 20px;
             color: white;
         }
+        .forecast {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .day {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px;
+            flex: 1;
+            max-width: 150px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        .day:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(4, 117, 132, 0.47);
+        }
+
+        .day h2 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+
 
