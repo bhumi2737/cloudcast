@@ -6,7 +6,276 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cloudcast</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        
+        * {
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: url(https://cdn.pixabay.com/photo/2017/01/31/13/40/shooting-star-2024127_1280.png);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
+        
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .forecast {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .day {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px;
+            flex: 1;
+            max-width: 150px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .day:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(4, 117, 132, 0.47);
+        }
+
+        .day h2 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .day img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .day p {
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .day p:last-of-type {
+            font-size: 1rem;
+            color: white;
+        }
+
+        nav {
+            background-color: black;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            list-style-type: none;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .navbar li {
+            display: inline;
+            margin: 0;
+        }
+
+        .navbar li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        .navbar li a:hover {
+            background-color: #575757;
+        }
+        
+        .icon1 {
+        padding: 50px 30px;
+        position: relative;
+        top: -50px; /* Adjust the value to move the icon up */
+        }
+
+        .icon1 img {
+        width: 60px;
+        height: 60px;
+        }
+
+        .search-container {
+            position: absolute;
+            left: 100px;
+            top: 15px;
+            display: inline-block;
+            z-index: 100;
+        }
+
+        .search-input {
+            width: 250px;
+            padding: 10px;
+            border-radius: 25px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+        }
+
+        .search-button {
+            background-color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .search-button i {
+            font-size: 20px;
+            color: #007bff;
+        }
+
+        .search-button:hover i {
+            color: #0056b3;
+        }
+        
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding:  0;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            margin-top: 0;
+        }
+
+        .footer-section {
+            text-align: left;
+            line-height: 25px;
+            flex: 1;
+            font-style:bold;
+            padding: 10px;
+            min-width: 250px;
+            margin: 20px;
+            margin-right: 100px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 10px;
+            color: #ff9900;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #ff9900;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 10px;
+            background-color: #222;
+            color: #ccc;
+            font-size: 14px;
+        }
+        /* Media Queries for Smaller Screens */
+      @media (max-width: 1024px) {
+            .navbar {
+                display: none;
+            }
+
+            .navbar.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: black;
+                width: 100%;
+                text-align: center;
+            }
+
+            .navbar.active li {
+                padding: 15px;
+            }
+
+            .search-container {
+                display: block;
+                position: absolute;
+                left: 20px;
+                top: 15px;
+                width: 70%;
+            }
+
+            .search-input {
+                width: 50%;
+            }
+
+            .hamburger {
+        display: flex;
+            }
+
+            .weather-container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .forecast {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .day {
+                width: 90%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav>
