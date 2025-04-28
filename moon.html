@@ -181,3 +181,29 @@ opacity: 1;
 transform: translateY(0);
 }
 }
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: translateY(-20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@media (max-width: 600px) {
+.moon-phase {
+width: 90px;
+height: 90px;
+}
+.phase-name {
+font-size: 0.8rem;
+}
+}
+
+@media screen and (max-width: 1080px) {
+.forecast {
+flex-direction: column;
+align-items: center;
+}
