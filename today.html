@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudcast</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+</head>
+<body>
+
+    <nav>
+        <ul class="navbar">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="today.html">Today</a></li>
+            <li><a href="10Day.html">10 Day</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="moon.html">Moon Phases</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+        
+        
+
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search...">
+            <button class="search-button" onclick="searchCity()">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="location-container" id="weather-container">
+       
+    </div>
+
+    <div class="error" id="error-message" style="color: red; text-align: center;"></div>
+
+</body>
+</html>
