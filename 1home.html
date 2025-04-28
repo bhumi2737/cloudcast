@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cloudcast</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="today.html">Today</a></li>
+            <li><a href="10Day.html">10 Day</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="moon.html">Moon Phases</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+        <a href="home.html" class="icon1">
+            <img src="NEW1.jpg" alt="Home Icon">
+        </a>
+        
+        <div class="search-container">
+            <input type="text" id="cityInput" class="search-input" placeholder="Enter your city">
+            <button class="search-button" onclick="searchCity()">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        
+        
+        
+    </nav>
+
+    <div class="weather-container">
+        <div class="header">
+            <h1 style="color:rgb(255, 255, 255);font-weight: 20px ;font-family:georgia;font-size:400%;margin:0%;">CloudCast</h1>
+            <p style="color: rgb(255, 255, 255); font-style:italic;font-weight: 20px;font-size: x-large;">Get your daily weather updates</p>
+            <p id="city-name" style="color: white; font-size: 1.5rem;"></p> 
+        </div>
+        
+        <div id="forecast" class="forecast">
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About</h4>
+                <p>At Cloudcast, we provide accurate and timely weather updates to keep you informed and prepared. Our app offers real-time forecasts, temperature details, and severe weather alerts, ensuring you’re never caught off guard. Stay ahead of the weather with Cloudcast!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: info@cloudcast.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Cloudcast | All Rights Reserved
+        </div>
+    </footer>
+    
+</body>
+</html>
