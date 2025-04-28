@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,12 @@
     <title>Cloudcast</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        
         * {
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
+
         body {
             background: url(https://cdn.pixabay.com/photo/2017/01/31/13/40/shooting-star-2024127_1280.png);
             display: flex;
@@ -40,13 +41,13 @@
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            color: white;
+            color: rgb(230, 224, 224);
         }
 
         .header p {
             font-size: 1.2rem;
             margin-bottom: 20px;
-            color: white;
+            color: rgb(230, 224, 224);
         }
 
         .forecast {
@@ -128,16 +129,17 @@
         .navbar li a:hover {
             background-color: #575757;
         }
-        
+
         .icon1 {
-        padding: 50px 30px;
-        position: relative;
-        top: -50px; /* Adjust the value to move the icon up */
+            padding: 50px 30px;
+            position: relative;
+            top: -50px;
+            /* Adjust the value to move the icon up */
         }
 
         .icon1 img {
-        width: 60px;
-        height: 60px;
+            width: 60px;
+            height: 60px;
         }
 
         .search-container {
@@ -174,12 +176,12 @@
         .search-button:hover i {
             color: #0056b3;
         }
-        
-        
+
+
         footer {
             background-color: #333;
             color: #fff;
-            padding:  0;
+            padding: 0;
             position: relative;
             width: 100%;
             bottom: 0;
@@ -200,7 +202,7 @@
             text-align: left;
             line-height: 25px;
             flex: 1;
-            font-style:bold;
+            font-style: bold;
             padding: 10px;
             min-width: 250px;
             margin: 20px;
@@ -212,7 +214,8 @@
             color: #ff9900;
         }
 
-        .footer-section p, .footer-section a {
+        .footer-section p,
+        .footer-section a {
             color: #ccc;
             text-decoration: none;
         }
@@ -228,8 +231,9 @@
             color: #ccc;
             font-size: 14px;
         }
+
         /* Media Queries for Smaller Screens */
-      @media (max-width: 1024px) {
+        @media (max-width: 1024px) {
             .navbar {
                 display: none;
             }
@@ -262,7 +266,7 @@
             }
 
             .hamburger {
-        display: flex;
+                display: flex;
             }
 
             .weather-container {
@@ -290,6 +294,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
         <ul class="navbar">
@@ -303,26 +308,28 @@
         <a href="home.html" class="icon1">
             <img src="NEW1.jpg" alt="Home Icon">
         </a>
-        
+
         <div class="search-container">
             <input type="text" id="cityInput" class="search-input" placeholder="Enter your city">
             <button class="search-button" onclick="searchCity()">
                 <i class="fas fa-search"></i>
             </button>
         </div>
-        
-        
-        
-        
+
+
+
+
     </nav>
 
     <div class="weather-container">
         <div class="header">
-            <h1 style="color:rgb(255, 255, 255);font-weight: 20px ;font-family:georgia;font-size:400%;margin:0%;">CloudCast</h1>
-            <p style="color: rgb(255, 255, 255); font-style:italic;font-weight: 20px;font-size: x-large;">Get your daily weather updates</p>
-            <p id="city-name" style="color: white; font-size: 1.5rem;"></p> 
+            <h1 style="color:rgb(255, 255, 255);font-weight: 20px ;font-family:georgia;font-size:400%;margin:0%;">
+                CloudCast</h1>
+            <p style="color: rgb(255, 255, 255); font-style:italic;font-weight: 20px;font-size: x-large;">Get your daily
+                weather updates</p>
+            <p id="city-name" style="color: white; font-size: 1.5rem;"></p>
         </div>
-        
+
         <div id="forecast" class="forecast">
 
         </div>
@@ -332,7 +339,9 @@
         <div class="footer-container">
             <div class="footer-section">
                 <h4>About</h4>
-                <p>At Cloudcast, we provide accurate and timely weather updates to keep you informed and prepared. Our app offers real-time forecasts, temperature details, and severe weather alerts, ensuring you’re never caught off guard. Stay ahead of the weather with Cloudcast!</p>
+                <p>At Cloudcast, we provide accurate and timely weather updates to keep you informed and prepared. Our
+                    app offers real-time forecasts, temperature details, and severe weather alerts, ensuring you’re
+                    never caught off guard. Stay ahead of the weather with Cloudcast!</p>
             </div>
             <div class="footer-section">
                 <h4>Contact Us</h4>
@@ -344,10 +353,10 @@
         </div>
     </footer>
     <script>
-        const apiKey = "f03aeec07b54b9838abeda4c216ac23a"; 
+        const apiKey = "f03aeec07b54b9838abeda4c216ac23a";
         const forecastContainer = document.getElementById("forecast");
         const cityNameElement = document.getElementById("city-name");
-        
+
         function fetchWeather(url) {
             fetch(url)
                 .then(response => response.json())
@@ -363,7 +372,7 @@
                 navigator.geolocation.getCurrentPosition(position => {
                     const { latitude, longitude } = position.coords;
                     const url = https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey};
-                    fetchWeather(url);
+                        fetchWeather(url);
                 });
             } else {
                 alert("Geolocation is not supported by this browser.");
@@ -376,7 +385,7 @@
             const query = document.getElementById("search-input").value;
             if (query) {
                 const url = (https://api.openweathermap.org/data/2.5/forecast?q=${query}&units=metric&appid=${apiKey});
-                fetchWeather(url);
+                    fetchWeather(url);
             } else {
                 alert("Please enter a location.");
             }
@@ -385,14 +394,14 @@
         function displayCityName(data) {
             const city = data.city.name;
             const country = data.city.country;
-            cityNameElement.textContent = Weather in ${city}, ${country};
+            cityNameElement.textContent = Weather in ${ city }, ${ country };
         }
 
         function displayForecast(data) {
             forecastContainer.innerHTML = "";
             const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
             for (let i = 0; i < 5; i++) {
-                const weather = data.list[i * 8]; 
+                const weather = data.list[i * 8];
                 const dayElement = `
                     <div class="day">
                         <h2>${days[i]}</h2>
@@ -407,6 +416,7 @@
 
         window.onload = getCurrentLocationWeather;
     </script>
-    
+
 </body>
+
 </html>
