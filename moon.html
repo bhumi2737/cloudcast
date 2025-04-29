@@ -364,3 +364,17 @@ padding: 8px 10px;
             const data = await response.json();
             return data[0];
         }
+        function displayMoonData(data) {
+            const { Phase, Illumination, Age } = data;
+            const currentDate = new Date().toLocaleString();
+
+            document.getElementById('moon-phase').innerText = Phase;
+            document.getElementById('moon-date').innerText = currentDate;
+            document.getElementById('percentage-illuminated').innerText = `${(Illumination * 100).toFixed(2)}%`;
+            document.getElementById('moon-age').innerText = Age;
+
+            moonImage.src = moonPhaseImages[Phase] || '';
+            moonImage.alt = Phase;
+
+            currentPhaseContainer.style.display = 'block';
+        }
