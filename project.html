@@ -225,7 +225,24 @@
             color: #ccc;
             font-size: 14px;
         }
+          /* Media Queries for Smaller Screens */
+      @media (max-width: 1024px) {
+            .navbar {
+                display: none;
+            }
 
+            .navbar.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: black;
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
 
        
       
