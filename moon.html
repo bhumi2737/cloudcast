@@ -403,12 +403,23 @@ padding: 8px 10px;
         }
         window.onload = getUserLocation;
 
-        
         searchBtn.addEventListener('click', async () => {
             const city = cityInput.value.trim();
             if (!city) {
                 moonDataContainer.innerHTML = '<p>Please enter a city name.</p>';
                 return;
             }
-        }
-    )
+
+            try {
+                loadingIndicator.style.display = 'block';
+                currentPhaseContainer.style.display = 'none';
+
+                const { lat, lon } = await fetchCoordinates(city);
+                const moonData = await fetchMoonData(lat, lon);
+                displayMoonData(moonData);
+
+                loadingIndicator.style.display = 'none';
+            } catch (error) {
+                moonDataContainer.innerHTML = <p>Error: ${error.message}</p>;
+            }
+        });    
