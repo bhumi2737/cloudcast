@@ -401,3 +401,14 @@ padding: 8px 10px;
                 moonDataContainer.innerHTML = '<p>Geolocation is not supported by this browser.</p>';
             }
         }
+        window.onload = getUserLocation;
+
+        
+        searchBtn.addEventListener('click', async () => {
+            const city = cityInput.value.trim();
+            if (!city) {
+                moonDataContainer.innerHTML = '<p>Please enter a city name.</p>';
+                return;
+            }
+        }
+    )
