@@ -361,4 +361,6 @@ padding: 8px 10px;
             if (!response.ok) {
                 throw new Error('Failed to fetch moon data');
             }
+            const data = await response.json();
+            return data[0];
         }
