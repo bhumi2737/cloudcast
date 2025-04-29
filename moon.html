@@ -396,4 +396,8 @@ padding: 8px 10px;
                     }
                 }, (error) => {
                     moonDataContainer.innerHTML = <p>Error: ${error.message}</p>;
-                });} }
+                });
+            } else {
+                moonDataContainer.innerHTML = '<p>Geolocation is not supported by this browser.</p>';
+            }
+        }
