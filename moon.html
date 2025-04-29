@@ -378,3 +378,22 @@ padding: 8px 10px;
 
             currentPhaseContainer.style.display = 'block';
         }
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(async (position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    try {
+                        loadingIndicator.style.display = 'block';
+                        currentPhaseContainer.style.display = 'none';
+
+                        const moonData = await fetchMoonData(lat, lon);
+                        displayMoonData(moonData);
+
+                        loadingIndicator.style.display = 'none';
+                    } catch (error) {
+                        moonDataContainer.innerHTML = <p>Error: ${error.message}</p>;
+                    }
+                }, (error) => {
+                    moonDataContainer.innerHTML = <p>Error: ${error.message}</p>;
+                });} }
