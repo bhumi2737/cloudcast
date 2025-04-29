@@ -241,8 +241,190 @@
                 width: 100%;
                 text-align: center;
             }
+            .navbar.active li {
+                padding: 15px;
+            }
+
+            .search-container {
+                display: block;
+                position: absolute;
+                left: 20px;
+                top: 15px;
+                width: 70%;
+            }
+
+            .search-input {
+                width: 50%;
+            }
+
+            .hamburger {
+        display: flex;
+            }
+
+            .weather-container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .forecast {
+                flex-direction: column;
+                align-items: center;
+            }
+            .day {
+                width: 90%;
+                margin-bottom: 10px;
+            }
         }
+    </style>
+</head>
+<body>
+    <nav>
         
+        <ul class="navbar">
+            <li><a href="project.html">Home</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="10day.html">10day.html</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="moon.html">Moon Phases</a></li>
+            <li><a href="Aboutus.html">About Us</a></li>
+        </ul>
+        <a href="project.html" class="icon">
+            <img src="NEW.jpg" alt="Home Icon">
+        </a>
+        <!-- Search input and button (now positioned on the left side) -->
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search...">
+            <button class="search-button" onclick="searchCity()">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+    
+    <div class="weather-container">
+        <div class="header">
+            <h1 style="color:rgb(255, 255, 255);font-weight: 20px ;font-family:georgia;font-size:400%;margin:0%;">CloudCast</h1>
+            <p style="color: rgb(255, 255, 255); font-style:italic;font-weight: 20px;font-size: x-large;">Get your daily weather updates</p>
+            <p id="city-name" style="color: white; font-size: 1.5rem;"></p> <!-- City name will appear here -->
+        </div>
+        <p id="city-name" style="color: white; font-size: 1.5rem;"></p> <!-- City name will appear here -->
+    </div>
+    
+    <div id="forecast" class="forecast">
+        <!-- 5-day weather forecast will be displayed here -->
+    </div>
+</div>
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4><a href="Aboutus.html" class="footer-link">About Us</a></h4>
+            <p>At Cloudcast, we provide accurate and timely weather updates to keep you informed and prepared. Our app offers real-time forecasts, temperature details, and severe weather alerts, ensuring you’re never caught off guard. Stay ahead of the weather with Cloudcast!</p>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>Email: info@cloudcast.com</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2024 Cloudcast | All Rights Reserved
+    </div>
+</footer>
+<script>
+    function toggleMenu() {
+const navbarLinks = document.getElementById("navbar-links");
+navbarLinks.classList.toggle("active");
+}
+    const apiKey = "f03aeec07b54b9838abeda4c216ac23a"; // Replace with your OpenWeatherMap API key
+    const forecastContainer = document.getElementById("forecast");
+    const cityNameElement = document.getElementById("city-name");
+
+    // Function to get day name from a date
+    function getDayName(date) {
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const day = new Date(date).getDay();
+        return days[day];
+    }
+
+    // Fetch 5-day weather forecast
+    function fetchWeather(lat, lon, cityName) {
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+            .then(response => response.json())
+            .then(data => {
+                cityNameElement.textContent = `Weather in ${cityName}`; // Display city name
+                const forecast = data.list.filter((item, index) => index % 8 === 0); // Getting daily forecast (every 8th item)
+                    forecastContainer.innerHTML = "";
+
+                    forecast.forEach(item => {
+                        const date = item.dt_txt;
+                        const dayName = getDayName(date);
+                        const temp = item.main.temp;
+                        const description = item.weather[0].description;
+                        const icon = `https://openweathermap.org/img/wn/${item.weather[0].icon}.png`;
+
+                        forecastContainer.innerHTML += `
+                            <div class="day">
+                                <h2>${dayName}</h2>
+                                <img src="${icon}" alt="Weather icon">
+                                <p>${temp}°C</p>
+                                <p>${description}</p>
+                            </div>
+                        `;
+                    });
+                });
+        }
+
+// Get user's location and fetch weather
+function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const { latitude, longitude } = position.coords;
+                    fetchWeather(latitude, longitude, "Your Location");
+                }, error => {
+                    console.log(error);
+                    alert("Unable to fetch your location.");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Search for weather by city name
+        function searchCity() {
+            const city = document.getElementById("search-input").value;
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+                .then(response => response.json())
+                .then(data => {
+                    const lat = data.coord.lat;
+                    const lon = data.coord.lon;
+                    fetchWeather(lat, lon, city);
+                })
+                .catch(() => {
+                    alert("City not found. Please try again.");
+                });
+        }
+
+        // Fetch weather when the page loads (for user's location)
+        window.onload = getUserLocation;
+    </script>
+</body>
+</html>
+
+
+`
+
+
 
        
       
