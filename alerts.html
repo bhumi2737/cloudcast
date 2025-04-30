@@ -231,6 +231,14 @@ h1 {
                
                 updateAlerts(alertsData.alerts || [], cityName, false); 
             }
+            catch (error) {
+                console.error(error.message);
+                alert('Error fetching weather data. Please try again.');
+            }
+        }
+
+      
+
 </script>
 </body>
 </html>
