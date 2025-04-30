@@ -309,7 +309,17 @@ h1 {
                         const cityName = cityData.name;
 
 
+ const alertsResponse = await fetch(⁠ https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey} ⁠);
+                        const alertsData = await alertsResponse.json();
 
+                       
+                        updateAlerts(alertsData.alerts || [], cityName, true); 
+                    } catch (error) {
+                        console.error(error);
+                        alert('Error fetching weather data for your location.');
+                    }
+                });
+            } 
 
 
 </script>
