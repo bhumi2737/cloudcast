@@ -295,6 +295,13 @@ h1 {
             }
         }
 
+ window.onload = function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(async function(position) {
+                    const apiKey = '24dd442fa784e730a250afd20d761dfd'; 
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+
 
 
 
