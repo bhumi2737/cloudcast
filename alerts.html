@@ -237,7 +237,30 @@ h1 {
             }
         }
 
-      
+      function updateAlerts(alerts, cityName, isInitialLoad) {
+            const alertContainer = document.querySelector('.alert-container');
+            alertContainer.innerHTML = ''; 
+
+           
+            const defaultAlerts = [
+                { type: 'warning', event: 'Severe Thunderstorm Warning' },
+                { type: 'info', event: 'Flood Watch' },
+                { type: 'danger', event: 'Heat Advisory' },
+                { type: 'success', event: 'Weather Update' },
+                { type: 'winter-storm', event: 'Winter Storm Warning' },
+                { type: 'air-quality', event: 'Air Quality Alert' }
+            ];
+
+         
+            defaultAlerts.forEach(alert => {
+                const alertDiv = document.createElement('div');
+                alertDiv.classList.add('alert', alert.type);
+
+                const alertIcon = document.createElement('i');
+                alertIcon.classList.add('fas', 'fa-exclamation-triangle'); 
+                alertDiv.appendChild(alertIcon);
+
+
 
 </script>
 </body>
