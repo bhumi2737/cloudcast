@@ -272,6 +272,16 @@ h1 {
 
                 alertContainer.appendChild(alertDiv);
             });
+ if (alerts.length > 0) {
+                alerts.forEach((alert) => {
+                    const alertType = alert.event.toLowerCase().replace(/\s+/g, '-'); 
+                    const alertDiv = document.createElement('div');
+                    alertDiv.classList.add('alert', alertType);
+
+                    const alertIcon = document.createElement('i');
+                    alertIcon.classList.add('fas', 'fa-exclamation-triangle'); 
+                    alertDiv.appendChild(alertIcon);
+
 
 
 
