@@ -259,6 +259,20 @@ h1 {
                 const alertIcon = document.createElement('i');
                 alertIcon.classList.add('fas', 'fa-exclamation-triangle'); 
                 alertDiv.appendChild(alertIcon);
+                const alertHeading = document.createElement('h2');
+                alertHeading.textContent = alert.event;
+                alertDiv.appendChild(alertHeading);
+
+                
+                const noAlertMessage = document.createElement('p');
+                noAlertMessage.textContent = isInitialLoad 
+                    ? ⁠ No alerts for ${cityName} at this time. ⁠ 
+                    : ⁠ No alerts for ${cityName} for upcoming days. ⁠;
+                alertDiv.appendChild(noAlertMessage);
+
+                alertContainer.appendChild(alertDiv);
+            });
+
 
 
 
