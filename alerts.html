@@ -216,7 +216,21 @@ h1 {
                 alert('Please enter a city name!');
                 return;
             }
-            
+              try {
+               
+                const cityResponse = await fetch(⁠ https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey} ⁠);
+                if (!cityResponse.ok) throw new Error('City not found');
+                
+                const cityData = await cityResponse.json();
+                const { lat, lon } = cityData.coord;
+
+               
+                const alertsResponse = await fetch(⁠ https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey} ⁠);
+                const alertsData = await alertsResponse.json();
+
+               
+                updateAlerts(alertsData.alerts || [], cityName, false); 
+            }
 </script>
 </body>
 </html>
