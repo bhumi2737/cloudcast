@@ -14,7 +14,7 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-
+        /* body tag css */
         body {
             background: url(https://cdn.pixabay.com/photo/2017/01/31/13/40/shooting-star-2024127_1280.png);
             display: flex;
@@ -23,7 +23,7 @@
             min-height: 100vh;
             margin: 0;
         }
-
+        /* weather container css */
         .weather-container {
             background: rgb(37, 114, 238);
             padding: 30px;
@@ -38,7 +38,7 @@
             backdrop-filter: blur(10px);
             animation: fadeIn 0.8s ease-in-out;
         }
-
+        /* header tag css */
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
@@ -95,7 +95,7 @@
             font-size: 1rem;
             color: white;
         }
-
+        /* nav bar css */
         nav {
             background-color: #04023b;
             padding: 10px 0;
@@ -120,17 +120,17 @@
         }
 
         .navbar li a {
-            color: white;
+            color: rgb(9, 156, 234);
             text-decoration: none;
             padding: 10px 20px;
-            background-color: #353536;
+            background-color: #fafcfe;
             border-radius: 5px;
         }
 
         .navbar li a:hover {
             background-color: #0e0e3f;
         }
-
+        /* icon css  */
         .icon1 {
             padding: 50px 30px;
             position: relative;
@@ -178,7 +178,7 @@
             color: #0056b3;
         }
 
-
+        /* footer css */
         footer {
             background-color: #04023b;
             color: #fff;
@@ -217,12 +217,12 @@
 
         .footer-section p,
         .footer-section a {
-            color: #eee7e7;
+            color: #f8f7f5;
             text-decoration: none;
         }
 
         .footer-section a:hover {
-            color: #573605;
+            color: #f99909;
         }
 
         .footer-bottom {
@@ -233,7 +233,6 @@
             font-size: 14px;
         }
 
-        
         @media (max-width: 1024px) {
             .navbar {
                 display: none;
@@ -297,6 +296,7 @@
 </head>
 <!-- body of the code -->
 <body>
+    <!-- navigation bar -->
     <nav>
         <ul class="navbar">
             <li><a href="home.html">Home</a></li>
@@ -316,10 +316,6 @@
                 <i class="fas fa-search"></i>
             </button>
         </div>
-
-
-
-
     </nav>
 
     <div class="weather-container">
@@ -335,17 +331,17 @@
 
         </div>
     </div>
-
+    <!-- footer of the page -->
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <h4>About</h4>
+                <h4><a href="aboutus.html">About</a></h4>
                 <p>At Cloudcast, we provide accurate and timely weather updates to keep you informed and prepared. Our
                     app offers real-time forecasts, temperature details, and severe weather alerts, ensuring you’re
                     never caught off guard. Stay ahead of the weather with Cloudcast!</p>
             </div>
             <div class="footer-section">
-                <h4>Contact Us</h4>
+                <h4><a href="contact.html">Contact Us</a></h4>
                 <p>Email: info@cloudcast.com</p>
             </div>
         </div>
@@ -368,7 +364,6 @@
                 })
                 .catch(error => console.error("Error fetching weather data:", error));
         }
-
         function getCurrentLocationWeather() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
@@ -380,9 +375,6 @@
                 alert("Geolocation is not supported by this browser.");
             }
         }
-
-
-
         function searchWeather() {
             const query = document.getElementById("search-input").value;
             if (query) {
@@ -418,7 +410,9 @@
 
         window.onload = getCurrentLocationWeather;
     </script>
-
 </body>
 
+
 </html>
+
+
