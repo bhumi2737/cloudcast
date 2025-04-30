@@ -282,6 +282,19 @@ h1 {
                     alertIcon.classList.add('fas', 'fa-exclamation-triangle'); 
                     alertDiv.appendChild(alertIcon);
 
+ const alertHeading = document.createElement('h2');
+                    alertHeading.textContent = ⁠ ${alert.event} in ${cityName} ⁠;
+                    alertDiv.appendChild(alertHeading);
+
+                    const alertDescription = document.createElement('p');
+                    alertDescription.textContent = alert.description || 'No description available.';
+                    alertDiv.appendChild(alertDescription);
+
+                    alertContainer.appendChild(alertDiv);
+                });
+            }
+        }
+
 
 
 
