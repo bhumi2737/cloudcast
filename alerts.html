@@ -302,6 +302,12 @@ h1 {
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
 
+  try {
+                       
+                        const cityResponse = await fetch(⁠ https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey} ⁠);
+                        const cityData = await cityResponse.json();
+                        const cityName = cityData.name;
+
 
 
 
